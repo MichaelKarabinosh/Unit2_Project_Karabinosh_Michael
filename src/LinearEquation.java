@@ -20,16 +20,19 @@ public class LinearEquation {
         double YInt = y1 - (calculateSlope()*x1);
         return YInt;
     }
-    public void equation()
+    public String equation()
     {
         if (calculateYInt()>0){
-            System.out.println("y = " + calculateSlope() + " x" + calculateYInt());
+            String equation = "y = " + calculateSlope() + " x" + calculateYInt();
+            return equation;
         }
         else if (calculateYInt()<0) {
-            System.out.println("y = " + calculateSlope() + " x" + " - " + Math.abs(calculateYInt()));
+            String equation = "y = " + calculateSlope() + " x" + " - " + Math.abs(calculateYInt());
+            return equation;
         }
         else {
-            System.out.println("y = " + calculateSlope() + " x");
+            String equation = "y = " + calculateSlope() + " x";
+            return equation;
         }
     }
     public double calculateDistance()
@@ -42,17 +45,19 @@ public class LinearEquation {
         double y3 = calculateSlope() * x3 + calculateYInt();
         return y3;
     }
-    public void printCoordinates(double x, double y)
+    public String printCoordinates(double x, double y)
     {
-        System.out.print("(" + x + ", " + y + ")");
+        String coords = "(" + x + ", " + y + ")";
+        return coords;
     }
     public String toString()
 
     {
-        System.out.println("Your first coordinates were, ");
-        printCoordinates(x1,y1);
-        System.out.println("Your second coordinates were, ");
-        printCoordinates(x2,y2);
+        String coordinates = "Your first coordinates were, " + printCoordinates(x1,y1) + "\n" + "Your second coordinates were, " + printCoordinates(x2,y2);
+        String generalInfo = "The slope of the points is: " + calculateSlope() + "\n" + "The y-intercept of the line created by these points is: " + calculateYInt();
+        String distance = "The distance between the two points is: " + calculateDistance();
+        String line = "The equation of the line is: " + equation();
+        String extraCoorindate;
 
 
     }
