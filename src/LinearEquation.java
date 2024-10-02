@@ -3,8 +3,10 @@ public class LinearEquation {
     private int x2;
     private int y1;
     private int y2;
+    private double x3;
+    private double y3;
 
-    public LinearEquation(int x1, int x2, int y1, int y2){
+    public LinearEquation(int x1, int y1, int x2, int y2){
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;
@@ -12,7 +14,7 @@ public class LinearEquation {
     }
     public double calculateSlope()
     {
-        double slope = (double) (y2-y1/x2-x1);
+        double slope = (double)(y2-y1)/(double)(x2-x1);
         return slope;
     }
     public double calculateYInt()
@@ -23,15 +25,15 @@ public class LinearEquation {
     public String equation()
     {
         if (calculateYInt()>0){
-            String equation = "y = " + calculateSlope() + " x" + calculateYInt();
+            String equation = "y = " + fractionSlope() + "x + " + calculateYInt();
             return equation;
         }
         else if (calculateYInt()<0) {
-            String equation = "y = " + calculateSlope() + " x" + " - " + Math.abs(calculateYInt());
+            String equation = "y = " + fractionSlope() + "x" + " - " + Math.abs(calculateYInt());
             return equation;
         }
         else {
-            String equation = "y = " + calculateSlope() + " x";
+            String equation = "y = " + fractionSlope() + "x";
             return equation;
         }
     }
@@ -50,14 +52,21 @@ public class LinearEquation {
         String coords = "(" + x + ", " + y + ")";
         return coords;
     }
+    public String fractionSlope()
+    {
+        int num = y2-y1;
+        int denom = x2-x1;
+        return String.valueOf(num) + "/" + String.valueOf(denom);
+    }
     public String toString()
 
     {
-        String coordinates = "Your first coordinates were, " + printCoordinates(x1,y1) + "\n" + "Your second coordinates were, " + printCoordinates(x2,y2);
-        String generalInfo = "The slope of the points is: " + calculateSlope() + "\n" + "The y-intercept of the line created by these points is: " + calculateYInt();
-        String distance = "The distance between the two points is: " + calculateDistance();
-        String line = "The equation of the line is: " + equation();
-        String extraCoorindate;
+        String a = "Your first coordinates were (" + x1 + "," + y1 + ")" + "\n" + "Your second coordinates were (" + x2 + "," + y2 + ")";
+        String b = "\nThe slope of the line is: " + calculateSlope() + "\n" + "The y-intercept is: " + calculateYInt();
+        String c = "\nThe distance between the two points is: " + String.format("%.2f", calculateDistance());
+        String d = "\nThe equation of the line is: " + equation();
+        String allInfo = a + b + c + d;
+        return allInfo;
 
 
     }
