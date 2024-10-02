@@ -56,7 +56,11 @@ public class LinearEquation {
     {
         int num = y2-y1;
         int denom = x2-x1;
-        return String.valueOf(num) + "/" + String.valueOf(denom);
+        if (num/denom == (int)(double)(y2-y1/x2-x1))
+        {
+            return String.valueOf(num) + "/" + String.valueOf(denom);
+        }
+
     }
     public String toString()
 
@@ -65,7 +69,8 @@ public class LinearEquation {
         String b = "\nThe slope of the line is: " + calculateSlope() + "\n" + "The y-intercept is: " + calculateYInt();
         String c = "\nThe distance between the two points is: " + String.format("%.2f", calculateDistance());
         String d = "\nThe equation of the line is: " + equation();
-        String allInfo = a + b + c + d;
+        String e = "\n----------------------------------------------------";
+        String allInfo = a + b + c + d + e;
         return allInfo;
 
 
