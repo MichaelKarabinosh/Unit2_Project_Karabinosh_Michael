@@ -3,8 +3,6 @@ public class LinearEquation {
     private int x2;
     private int y1;
     private int y2;
-    private double x3;
-    private double y3;
 
     public LinearEquation(int x1, int y1, int x2, int y2){
         this.x1 = x1;
