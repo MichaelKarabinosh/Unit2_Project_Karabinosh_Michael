@@ -24,7 +24,8 @@ public class LinearEquation {
     }
     public String equation()
     {
-        if (calculateYInt()>0){
+        if (calculateYInt()>0)
+        {
             String equation = "y = " + fractionSlope() + "x + " + calculateYInt();
             return equation;
         }
@@ -52,21 +53,46 @@ public class LinearEquation {
         String coords = "(" + x + ", " + y + ")";
         return coords;
     }
+
     public String fractionSlope()
     {
         int num = y2-y1;
         int denom = x2-x1;
-        if (num/denom == (int)(double)(y2-y1/x2-x1))
+        if (num % denom == 0)
         {
-            return String.valueOf(num) + "/" + String.valueOf(denom);
-        }
+            if (num/denom == 1)
+            {
+                return "";
+            }
+            else {
+                return String.valueOf(num/denom);
+            }
 
+        }
+        if ((double)(num)/denom > 0)
+        {
+            return -1 * num + "/" + -1 * denom;
+        }
+        else if (denom < 0){
+            return -1 * num + "/" + -1 * denom;
+        }
+        else {
+            return num + "/" + denom;
+        }
+    }
+public String test() {
+        return fractionSlope();
+    }
+    public String thirdCoordinate(double x3)
+    {
+        double y3 = calculateSlope() * x3 + calculateYInt();
+    return "(" + String.format("%.2f",x3)  + ", " + String.format("%.2f",y3) + ")";
     }
     public String toString()
 
     {
         String a = "Your first coordinates were (" + x1 + "," + y1 + ")" + "\n" + "Your second coordinates were (" + x2 + "," + y2 + ")";
-        String b = "\nThe slope of the line is: " + calculateSlope() + "\n" + "The y-intercept is: " + calculateYInt();
+        String b = "\nThe slope of the line is: " + String.format("%.2f", calculateSlope()) + "\n" + "The y-intercept is: " + String.format("%.2f", calculateYInt());
         String c = "\nThe distance between the two points is: " + String.format("%.2f", calculateDistance());
         String d = "\nThe equation of the line is: " + equation();
         String e = "\n----------------------------------------------------";
